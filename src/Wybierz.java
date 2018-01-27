@@ -44,7 +44,7 @@ public class Wybierz {
 				System.out.println("Podaj nr: ");
 				nr = MainInput.nextInt();
 			}
-			Menu menu = new Menu(ListaImion.get(nr-1));		// jak przekazac oryginalny element listy?
+			Menu menu = new Menu(nr-1);
 			break;
 		case 2:
 			System.out.println("Podaj Imie i nazwisko");
