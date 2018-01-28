@@ -3,6 +3,7 @@ import java.util.Scanner;
 import javax.print.DocFlavor.INPUT_STREAM;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.List;
 
 public class Wybierz {
@@ -13,10 +14,26 @@ public class Wybierz {
 	
 	public static void main(String[] args)
 	{
-		ListaImion.add("Adam Ma³ysz");
-		ListaImion.add("Piotr Szczepañski");
-		ListaImion.add("Adam Boroñ");
+		ListaImion.add("Adam Malysz");
+		ListaImion.add("Piotr Szczepanski");
+		ListaImion.add("Adam Boron");
+		ListaImion.add("Lukasz Kluczkowski");
+		ListaImion.add("Magda Podolak");
 		MenuImion();
+	}
+	
+	public static int SprawdzZmienna()
+	{
+		try 
+		{
+			return MainInput.nextInt();
+		}
+		catch (InputMismatchException exception) 
+		{ 
+		    System.out.println("Podaj Tylko liczbe calkowita"); 
+		    MainInput.nextLine();
+		    return SprawdzZmienna();
+		} 
 	}
 
 	public static void MenuImion()
@@ -32,37 +49,42 @@ public class Wybierz {
 		System.out.println("######################");
 		System.out.println("1. Wybierz");
 		System.out.println("2. Dodaj");
-		System.out.println("3. Usuñ");
-		//Scanner input = new Scanner(System.in);
-		int c = MainInput.nextInt();
-		switch(c)
+		System.out.println("3. Usun");
+		System.out.println("4. Wyjdz");
+		
+		switch(SprawdzZmienna())
 		{
 		case 1:
 			int nr = -1;
-			while(nr<0 || nr>ListaImion.size()-1)
+			while(nr<0 || nr>ListaImion.size())
 			{
 				System.out.println("Podaj nr: ");
-				nr = MainInput.nextInt();
+				nr = SprawdzZmienna();
 			}
-			Menu menu = new Menu(nr-1);
+			new Menu(nr-1);
 			break;
 		case 2:
 			System.out.println("Podaj Imie i nazwisko");
-			String tekst = MainInput.nextLine(); // tutaj
-			ListaImion.add(tekst);
+			ListaImion.add(MainInput.nextLine());
 			MenuImion();
 			break;
 		case 3:
-			System.out.println("Podaj numer który chcesz usun¹æ ");
+			System.out.println("Podaj numer ktory chcesz usunac ");
 			try {
-				ListaImion.remove(MainInput.nextInt()-1);				// Jak zabezpieczyæ int przed przyjeciem liter np. "abc"?
+				ListaImion.remove(SprawdzZmienna()-1);				
 			}
 			catch(Exception e){
 				System.out.println("Numer ktory podales nie istnieje w liscie!");
 			}
 			MenuImion();
 			break;
+		case 4: 
+			System.exit(0);
+			break;
+		default: 
+			MenuImion();
 		}
+		
 		
 	}
 	
