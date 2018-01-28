@@ -1,7 +1,5 @@
 import java.util.Scanner;
 
-import javax.print.DocFlavor.INPUT_STREAM;
-
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.List;
