@@ -23,7 +23,6 @@ public class Menu {
 	
 	public void WyswietlMenu()
 	{
-//		konsola.
 		System.out.println("######################################");
 		if(infobool) 
 			{
@@ -37,12 +36,12 @@ public class Menu {
 		System.out.println("1. Zmien	");
 		System.out.println("2. Wyswietl samo nazwisko ");
 		System.out.println("3. Wyswietl samo imie ");
-		System.out.println("4. Obróæ imie i/lub nazwisko");
+		System.out.println("4. Obroc imie i/lub nazwisko");
 		System.out.println("5. losuj kolejnosc liter");
 		System.out.println("6. Dodaj Litery");
 		System.out.println("7. Zapisz Zmiany");
-		System.out.println("8. Wróæ");
-		switch(input.nextInt())
+		System.out.println("8. Wroc");
+		switch(wybierz.SprawdzZmienna())
 		{
 		case 1: Zmien();
 		break;
