@@ -41,16 +41,17 @@ public class Wybierz {
 		System.out.println("######################");
 		System.out.println("LISTA IMION: ");
 		int k = 0;
-		for(int i=0; i<ListaImion.size(); i++)
+		for(String imie : ListaImion)
 		{
 			k += 1;
-			System.out.println(k + ". " + ListaImion.get(i));
+			System.out.println(k + ". " + imie);
 		}
 		System.out.println("######################");
 		System.out.println("1. Wybierz");
 		System.out.println("2. Dodaj");
 		System.out.println("3. Usun");
-		System.out.println("4. Wyjdz");
+		System.out.println("4. Wyszukaj");
+		System.out.println("5. Wyjdz");
 		
 		switch(SprawdzZmienna())
 		{
@@ -65,6 +66,7 @@ public class Wybierz {
 			break;
 		case 2:
 			System.out.println("Podaj Imie i nazwisko");
+			MainInput.nextLine();
 			ListaImion.add(MainInput.nextLine());
 			MenuImion();
 			break;
@@ -78,7 +80,21 @@ public class Wybierz {
 			}
 			MenuImion();
 			break;
-		case 4: 
+		case 4:
+			int i = 1;
+			MainInput.nextLine();
+			String znajdz = MainInput.nextLine();
+			for(String imie : ListaImion)
+			{
+				if(imie.indexOf(znajdz) > -1)
+				{
+					System.out.println(i + ". " + imie);
+					i++;
+				}
+			}
+			MenuImion();
+			break;
+		case 5: 
 			System.exit(0);
 			break;
 		default: 
